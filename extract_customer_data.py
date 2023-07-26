@@ -9,7 +9,7 @@ class ConfigurationParser:
         return customerNames
     
     def parseCustomerVlan(self, customerName):
-        intPattern = (r"interface GigabitEthernet0\/0\.([0-9]+)\n encapsulation dot1Q [0-9]+\n ip vrf forwarding %s" % (customerName))
+        intPattern = ("interface GigabitEthernet0\/0\.([0-9]+)\\n  encapsulation dot1Q [0-9]+\\n  ip vrf forwarding %s" % (customerName))
         allCustomerSubInterfaces = re.search(intPattern, self.deviceConfig)
-        return (allCustomerSubInterfaces.group(1))
+        return int(allCustomerSubInterfaces.group(1))
     
