@@ -18,5 +18,3 @@ class ConfigurationParser:
         customerIpAddress = re.search(customerIpPattern, self.deviceConfig)
         return customerIpAddress.group(1)
     
-
-    
