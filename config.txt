@@ -4,6 +4,9 @@ ip vrf CUSTOMER_A
 ip vrf CUSTOMER_B
   rd 65000:101 
 !
+ip vrf CUSTOMER_C
+  rd 65000:201 
+!
 interface GigabitEthernet0/0.100
   encapsulation dot1Q 100
   ip vrf forwarding CUSTOMER_A 
@@ -20,8 +23,17 @@ interface GigabitEthernet0/0.101
   ip nat outside 
   ip virtual-reassembly in 
 !
+interface GigabitEthernet0/0.201
+  encapsulation dot1Q 201
+  ip vrf forwarding CUSTOMER_C 
+  ip address 20.10.101.1 255.255.255.0
+  no ip redirects 
+  ip nat outside 
+  ip virtual-reassembly in 
+!
 Interface                  IP-Address
 Embedded-Service-Engine0/0 unassigned
 GigabitEthernet0/0         192.168.254.2
 GigabitEthernet0/0.100     10.10.100.1
 GigabitEthernet0/0.101     10.10.101.1
+GigabitEthernet0/0.201     256.10.101.1
