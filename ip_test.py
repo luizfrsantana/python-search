@@ -1,22 +1,20 @@
-class is_ip_address:
-
-    def is_ip_address(self):
-        octets = self.split('.')
+def is_ip_address(ip):
+    octets = ip.split('.')
         
-        if len(octets) != 4:
+    if len(octets) != 4:
             return "Errado"
-        elif any(not octet.isdigit() for octet in octets):
+    elif any(not octet.isdigit() for octet in octets):
             return "Errado"
-        elif any(int(octet) < 0 for octet in octets):
+    elif any(int(octet) < 0 for octet in octets):
             return "Errado"
-        elif any(int(octet) > 255 for octet in octets):
+    elif any(int(octet) > 255 for octet in octets):
             return "Errado"
-        return "Certo"
+    return "Certo"
     
-    def is_ip_correct_network(self):
-        octets = self.split('.')
+def is_ip_correct_network(ip):
+    octets = ip.split('.')
 
-        if octets[0] == "10":
-            return "Certa"
-        else:
-            return "Errada"
+    if octets[0] == "10":
+        return "Certa"
+    else:
+        return "Errada"
