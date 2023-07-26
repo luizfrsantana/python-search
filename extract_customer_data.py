@@ -1,5 +1,7 @@
 import re
 
+#https://regex101.com/
+
 class ConfigurationParser:
     deviceConfig = open("config.txt", "r").read()
 
